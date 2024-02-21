@@ -7,8 +7,10 @@ export default {
       'sidebar-desktop': 'url("./src/assets/images/bg-sidebar-desktop.svg")',
     },
     borderRadius: {
+      none: '0px',
       sm: '4px',
       lg: '10px',
+      xl: '15px',
       full: '9999px',
     },
     boxShadow: {
@@ -34,11 +36,11 @@ export default {
       sans: ['Ubuntu', 'sans-serif'],
     },
     fontSize: {
-      sm: ['12px', 'auto'],
-      md: ['14px', 'auto'],
+      sm: ['12px', 'normal'],
+      md: ['14px', 'normal'],
       lg: ['16px', '25px'],
-      'heading-md': ['24px', 'auto'],
-      'heading-lg': ['32px', 'auto'],
+      'heading-md': ['24px', 'normal'],
+      'heading-lg': ['32px', 'normal'],
     },
     extend: {},
   },

@@ -1,7 +1,11 @@
 import { useContext } from 'react'
 import { AppContext } from '../Context'
 
-const Stepper = (): JSX.Element => {
+interface ComponentProps {
+  submitFunction: () => void
+}
+
+const Stepper = ({ submitFunction }: ComponentProps): JSX.Element => {
   const { currentStep, setCurrentStep } = useContext(AppContext)
 
   function handlePreviousStep() {
@@ -9,11 +13,13 @@ const Stepper = (): JSX.Element => {
   }
 
   return (
-    <div className='relative bottom-0 flex justify-between bg-white p-4'>
+    <div
+      className={`absolute inset-x-0 bottom-0 flex items-center bg-white p-4 md:static md:w-auto md:p-0 ${currentStep > 1 ? 'justify-between' : 'justify-end'}`}
+    >
       {currentStep > 1 && (
         <button
           type='button'
-          className='rounded-sm bg-transparent px-4 py-3 text-md font-normal text-denim'
+          className='rounded-sm bg-transparent py-3 text-md font-normal text-grey md:py-0'
           onClick={handlePreviousStep}
         >
           Go Back
@@ -21,7 +27,8 @@ const Stepper = (): JSX.Element => {
       )}
       <button
         type='submit'
-        className='rounded-sm bg-denim px-4 py-3 text-md font-normal text-white'
+        onClick={submitFunction}
+        className='rounded-sm bg-denim px-4 py-3 text-md font-normal text-white '
       >
         Next Step
       </button>
