@@ -14,7 +14,7 @@ const Stepper = ({ submitFunction }: ComponentProps): JSX.Element => {
 
   return (
     <div
-      className={`absolute inset-x-0 bottom-0 flex items-center bg-white p-4 md:static md:w-auto md:p-0 ${currentStep > 1 ? 'justify-between' : 'justify-end'}`}
+      className={` flex items-center bg-white p-4 md:static md:w-auto md:p-0 ${currentStep > 1 ? 'justify-between' : 'justify-end'}`}
     >
       {currentStep > 1 && (
         <button

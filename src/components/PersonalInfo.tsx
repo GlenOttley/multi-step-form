@@ -22,11 +22,12 @@ const PersonalInfo = (): JSX.Element => {
 
   function handleNextStep() {
     if (validate()) {
-      setFormData({
+      setFormData((prev) => ({
+        ...prev,
         name,
         email,
         phone,
-      })
+      }))
       setCurrentStep((currentStep) => currentStep + 1)
     }
   }
@@ -106,7 +107,7 @@ const PersonalInfo = (): JSX.Element => {
           handleNextStep()
         }}
         aria-describedby='formDescription'
-        className='md:rounded-none relative top-[99px] mx-auto rounded-lg bg-white px-6 py-8 drop-shadow-md md:top-0 md:mt-0 md:flex md:flex-col md:justify-between md:bg-transparent md:px-0 md:pl-4 md:pt-10 md:drop-shadow-none '
+        className='h-full md:flex md:flex-col md:justify-between'
       >
         <fieldset>
           <legend className='mb-4 text-heading-md text-denim'>
@@ -217,7 +218,7 @@ const PersonalInfo = (): JSX.Element => {
           <Stepper submitFunction={handleNextStep} />
         </div>
       </form>
-      <div className='md:hidden'>
+      <div className='fixed inset-x-0 bottom-0  md:hidden'>
         <Stepper submitFunction={handleNextStep} />
       </div>
     </>

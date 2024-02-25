@@ -14,6 +14,7 @@ interface FormData {
   name: string
   email: string
   phone: string
+  plan: 'arcade' | 'advanced' | 'pro'
 }
 
 export interface Context {
@@ -24,15 +25,17 @@ export interface Context {
 }
 
 export const AppContext = createContext<Context>({
-  currentStep: 1,
+  currentStep: 2,
   setCurrentStep: () => {},
   formData: {} as FormData,
   setFormData: () => {},
 })
 
 const Context = ({ children }: ComponentProps) => {
-  const [currentStep, setCurrentStep] = useState<number>(1)
-  const [formData, setFormData] = useState<FormData>({} as FormData)
+  const [currentStep, setCurrentStep] = useState<number>(2)
+  const [formData, setFormData] = useState<FormData>({
+    plan: 'arcade',
+  } as FormData)
 
   return (
     <AppContext.Provider
