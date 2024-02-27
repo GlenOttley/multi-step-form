@@ -1,16 +1,17 @@
-import { ChangeEvent, MouseEventHandler, useContext } from 'react'
+import { useContext } from 'react'
 import { AppContext } from '../Context'
 import Stepper from './Stepper'
 import iconArcade from '../assets/images/icon-arcade.svg'
 import iconAdvanced from '../assets/images/icon-advanced.svg'
 import iconPro from '../assets/images/icon-pro.svg'
 
-const SelectPlan = (): JSX.Element => {
-  const { formData, setFormData } = useContext(AppContext)
+// TODO add monthly/yearly toggle
+const Plan = (): JSX.Element => {
+  const { formData, setFormData, setCurrentStep } = useContext(AppContext)
   const { plan } = formData
 
   function handleNextStep() {
-    console.log(formData)
+    setCurrentStep((currentStep) => currentStep + 1)
   }
 
   return (
@@ -25,7 +26,7 @@ const SelectPlan = (): JSX.Element => {
         className='h-full md:flex md:flex-col md:justify-between'
       >
         <fieldset>
-          <legend className='mb-4 text-heading-md text-denim'>
+          <legend className='mb-4 text-heading-md font-bold text-denim'>
             Select your plan
           </legend>
           <span
@@ -41,7 +42,7 @@ const SelectPlan = (): JSX.Element => {
                 type='radio'
                 name='plan'
                 id='arcade'
-                className='peer'
+                className='peer pointer-events-none fixed opacity-0'
                 onChange={() =>
                   setFormData((prev) => ({ ...prev, plan: 'arcade' }))
                 }
@@ -49,7 +50,7 @@ const SelectPlan = (): JSX.Element => {
               />
               <label
                 htmlFor='arcade'
-                className='flex cursor-pointer items-center gap-[14px] rounded-md border border-border-color p-4 peer-checked:border-purple peer-checked:bg-very-light-grey peer-focus-visible:ring peer-focus-visible:ring-purple'
+                className='rounded-md flex cursor-pointer items-center gap-[14px] border border-border-color p-4 peer-checked:border-purple peer-checked:bg-very-light-grey peer-focus-visible:ring peer-focus-visible:ring-purple'
               >
                 <img src={iconArcade} alt='' />
                 <div className='flex flex-col justify-center'>
@@ -64,7 +65,7 @@ const SelectPlan = (): JSX.Element => {
                 type='radio'
                 name='plan'
                 id='advanced'
-                className='peer'
+                className='peer pointer-events-none fixed opacity-0'
                 onChange={() =>
                   setFormData((prev) => ({ ...prev, plan: 'advanced' }))
                 }
@@ -72,7 +73,7 @@ const SelectPlan = (): JSX.Element => {
               />
               <label
                 htmlFor='advanced'
-                className='flex cursor-pointer items-center gap-[14px] rounded-md border border-border-color p-4 peer-checked:border-purple peer-checked:bg-very-light-grey peer-focus-visible:ring peer-focus-visible:ring-purple'
+                className='rounded-md flex cursor-pointer items-center gap-[14px] border border-border-color p-4 peer-checked:border-purple peer-checked:bg-very-light-grey peer-focus-visible:ring peer-focus-visible:ring-purple'
               >
                 <img src={iconAdvanced} alt='' />
                 <div className='flex flex-col justify-center'>
@@ -89,7 +90,7 @@ const SelectPlan = (): JSX.Element => {
                 type='radio'
                 name='plan'
                 id='pro'
-                className='peer'
+                className='peer pointer-events-none fixed opacity-0'
                 onChange={() =>
                   setFormData((prev) => ({ ...prev, plan: 'pro' }))
                 }
@@ -97,7 +98,7 @@ const SelectPlan = (): JSX.Element => {
               />
               <label
                 htmlFor='pro'
-                className='flex cursor-pointer items-center gap-[14px] rounded-md border border-border-color p-4 peer-checked:border-purple peer-checked:bg-very-light-grey peer-focus-visible:ring peer-focus-visible:ring-purple'
+                className='rounded-md flex cursor-pointer items-center gap-[14px] border border-border-color p-4 peer-checked:border-purple peer-checked:bg-very-light-grey peer-focus-visible:ring peer-focus-visible:ring-purple'
               >
                 <img src={iconPro} alt='' />
                 <div className='flex flex-col justify-center'>
@@ -119,4 +120,4 @@ const SelectPlan = (): JSX.Element => {
   )
 }
 
-export default SelectPlan
+export default Plan

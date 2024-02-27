@@ -110,7 +110,7 @@ const PersonalInfo = (): JSX.Element => {
         className='h-full md:flex md:flex-col md:justify-between'
       >
         <fieldset>
-          <legend className='mb-4 text-heading-md text-denim'>
+          <legend className='mb-4 text-heading-md font-bold text-denim'>
             Personal info
           </legend>
           <span

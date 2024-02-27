@@ -2,8 +2,9 @@ import { useContext } from 'react'
 import { AppContext } from './Context'
 import Sidebar from './components/Sidebar'
 import PersonalInfo from './components/PersonalInfo'
-import SelectPlan from './components/SelectPlan'
-import DummyForm from './components/DummyForm'
+import Plan from './components/Plan'
+import AddOns from './components/AddOns'
+import FinishingUp from './components/FinishingUp'
 
 function App() {
   const { currentStep } = useContext(AppContext)
@@ -16,10 +17,11 @@ function App() {
           {currentStep === 1 ? (
             <PersonalInfo />
           ) : currentStep === 2 ? (
-            <SelectPlan />
+            <Plan />
+          ) : currentStep === 3 ? (
+            <AddOns />
           ) : (
-            // <DummyForm />
-            <h1>Step three</h1>
+            <FinishingUp />
           )}
         </main>
       </div>
