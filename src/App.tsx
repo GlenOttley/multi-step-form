@@ -3,6 +3,7 @@ import { AppContext } from './Context'
 import Sidebar from './components/Sidebar'
 import PersonalInfo from './components/PersonalInfo'
 import SelectPlan from './components/SelectPlan'
+import DummyForm from './components/DummyForm'
 
 function App() {
   const { currentStep } = useContext(AppContext)
@@ -17,6 +18,7 @@ function App() {
           ) : currentStep === 2 ? (
             <SelectPlan />
           ) : (
+            // <DummyForm />
             <h1>Step three</h1>
           )}
         </main>

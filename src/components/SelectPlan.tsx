@@ -36,65 +36,76 @@ const SelectPlan = (): JSX.Element => {
           </span>
 
           <div className='flex flex-col gap-4'>
-            <label
-              htmlFor='arcade'
-              className={`rounded-md flex cursor-pointer items-center gap-[14px] border p-4 ${plan == 'arcade' ? 'border-purple' : 'border-light-grey'}`}
-            >
+            <div>
               <input
                 type='radio'
                 name='plan'
                 id='arcade'
-                // className='sr-only'
+                className='peer'
                 onChange={() =>
                   setFormData((prev) => ({ ...prev, plan: 'arcade' }))
                 }
+                checked={plan == 'arcade'}
               />
-              <img src={iconArcade} alt='' />
-              <div className='flex flex-col justify-center'>
-                <span className='text-lg font-medium text-denim'>Arcade</span>
-                <span className='text-md font-normal text-grey'>$9/mo</span>
-              </div>
-            </label>
+              <label
+                htmlFor='arcade'
+                className='flex cursor-pointer items-center gap-[14px] rounded-md border border-border-color p-4 peer-checked:border-purple peer-checked:bg-very-light-grey peer-focus-visible:ring peer-focus-visible:ring-purple'
+              >
+                <img src={iconArcade} alt='' />
+                <div className='flex flex-col justify-center'>
+                  <span className='text-lg font-medium text-denim'>Arcade</span>
+                  <span className='text-md font-normal text-grey'>$9/mo</span>
+                </div>
+              </label>
+            </div>
 
-            <label
-              htmlFor='advanced'
-              className={`rounded-md flex cursor-pointer items-center gap-[14px] border p-4 ${plan == 'advanced' ? 'border-purple' : 'border-light-grey'}`}
-            >
+            <div>
               <input
                 type='radio'
                 name='plan'
                 id='advanced'
-                // className='sr-only'
+                className='peer'
                 onChange={() =>
                   setFormData((prev) => ({ ...prev, plan: 'advanced' }))
                 }
+                checked={plan == 'advanced'}
               />
-              <img src={iconAdvanced} alt='' />
-              <div className='flex flex-col justify-center'>
-                <span className='text-lg font-medium text-denim'>Advanced</span>
-                <span className='text-md font-normal text-grey'>$12/mo</span>
-              </div>
-            </label>
+              <label
+                htmlFor='advanced'
+                className='flex cursor-pointer items-center gap-[14px] rounded-md border border-border-color p-4 peer-checked:border-purple peer-checked:bg-very-light-grey peer-focus-visible:ring peer-focus-visible:ring-purple'
+              >
+                <img src={iconAdvanced} alt='' />
+                <div className='flex flex-col justify-center'>
+                  <span className='text-lg font-medium text-denim'>
+                    Advanced
+                  </span>
+                  <span className='text-md font-normal text-grey'>$12/mo</span>
+                </div>
+              </label>
+            </div>
 
-            <label
-              htmlFor='pro'
-              className={`rounded-md flex cursor-pointer items-center gap-[14px] border p-4 ${plan == 'pro' ? 'border-purple' : 'border-light-grey'}`}
-            >
+            <div>
               <input
                 type='radio'
                 name='plan'
                 id='pro'
-                // className='sr-only'
+                className='peer'
                 onChange={() =>
                   setFormData((prev) => ({ ...prev, plan: 'pro' }))
                 }
+                checked={plan == 'pro'}
               />
-              <img src={iconPro} alt='' />
-              <div className='flex flex-col justify-center'>
-                <span className='text-lg font-medium text-denim'>Pro</span>
-                <span className='text-md font-normal text-grey'>$15/mo</span>
-              </div>
-            </label>
+              <label
+                htmlFor='pro'
+                className='flex cursor-pointer items-center gap-[14px] rounded-md border border-border-color p-4 peer-checked:border-purple peer-checked:bg-very-light-grey peer-focus-visible:ring peer-focus-visible:ring-purple'
+              >
+                <img src={iconPro} alt='' />
+                <div className='flex flex-col justify-center'>
+                  <span className='text-lg font-medium text-denim'>Pro</span>
+                  <span className='text-md font-normal text-grey'>$15/mo</span>
+                </div>
+              </label>
+            </div>
           </div>
         </fieldset>
         <div className='hidden md:block'>
