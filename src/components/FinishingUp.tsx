@@ -2,13 +2,12 @@ import { useContext } from 'react'
 import { AppContext } from '../Context'
 import Stepper from './Stepper'
 
-const SelectPlan = (): JSX.Element => {
+const FinishingUp = (): JSX.Element => {
   const { formData } = useContext(AppContext)
 
   function handleNextStep() {
     console.log(formData)
   }
-
   return (
     <>
       <form
@@ -18,28 +17,28 @@ const SelectPlan = (): JSX.Element => {
           handleNextStep()
         }}
         aria-describedby='formDescription'
-        className='md:rounded-none mx-auto my-[99px] rounded-lg bg-white px-6 py-8 drop-shadow-md md:mt-0 md:bg-transparent md:px-0 md:pl-4 md:pt-10 md:drop-shadow-none '
+        className='h-full md:flex md:flex-col md:justify-between'
       >
         <fieldset>
-          <legend className='mb-4 text-heading-md text-denim'>
-            Personal info
+          <legend className='mb-4 text-heading-md font-bold text-denim'>
+            Finishing Up
           </legend>
           <span
             id='formDescription'
             className='mb-[22px] block text-lg text-grey'
           >
-            Please provide your name, email address, and phone number.
+            Double-check everything looks OK before confirming.
           </span>
         </fieldset>
         <div className='hidden md:block'>
           <Stepper submitFunction={handleNextStep} />
         </div>
       </form>
-      <div className='md:hidden'>
+      <div className='fixed inset-x-0 bottom-0  md:hidden'>
         <Stepper submitFunction={handleNextStep} />
       </div>
     </>
   )
 }
 
-export default SelectPlan
+export default FinishingUp
