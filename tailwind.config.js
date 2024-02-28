@@ -18,10 +18,12 @@ export default {
       md: '0, 25, 40, -20, rgba(0, 0, 0, 0.0951)',
     },
     colors: {
+      blue: '#164A8A',
       bg: '#EFF5FF',
       'border-color': '#D6D9E6',
       denim: '#022959',
       grey: '#9699AA',
+      lavender: '#928CFF',
       'light-blue': '#ABBCFF',
       'light-grey': '#D6D9E6',
       orange: '#FFAF7E',

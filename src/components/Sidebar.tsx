@@ -60,7 +60,7 @@ const Sidebar = (): JSX.Element => {
             <li className='flex items-center gap-4'>
               <span
                 className={`flex h-[33px] w-[33px] items-center justify-center rounded-full border ${
-                  currentStep === 4
+                  currentStep >= 4
                     ? 'border-sky-blue bg-sky-blue text-denim'
                     : 'border-white bg-transparent text-white'
                 }`}
