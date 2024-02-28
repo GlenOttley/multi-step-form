@@ -1,5 +1,6 @@
 import { useContext } from 'react'
-import { AppContext, AddOn } from '../Context'
+import { AppContext } from '../Context'
+import { AddOn } from '../types'
 
 interface ComponentProps {
   addOn: AddOn
@@ -9,22 +10,24 @@ const AddOns = ({ addOn }: ComponentProps): JSX.Element => {
   const { name, title, description, monthlyCost, yearlyCost } = addOn
 
   const {
-    formData: { addOns, billing },
+    formData: { addOns: SelectedAddOns, billing },
     setFormData,
   } = useContext(AppContext)
 
-  const addOnSelected = addOns.some((addOn) => addOn.name === name)
+  const addOnSelected = SelectedAddOns.some((addOn) => addOn.name === name)
 
   function handleCheckbox() {
     if (!addOnSelected) {
       setFormData((current) => ({
         ...current,
-        addOns: [...addOns, addOn],
+        addOns: [...current.addOns, addOn],
       }))
     } else {
       setFormData((current) => ({
         ...current,
-        addOns: addOns.filter((addOn) => addOn !== addOn),
+        addOns: current.addOns.filter(
+          (currentAddOn) => currentAddOn.name !== addOn.name,
+        ),
       }))
     }
   }

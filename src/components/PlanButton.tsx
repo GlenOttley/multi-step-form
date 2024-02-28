@@ -1,5 +1,6 @@
 import { useContext } from 'react'
-import { AppContext, Plan } from '../Context'
+import { AppContext } from '../Context'
+import { Plan } from '../types'
 
 interface ComponentProps {
   plan: Plan
@@ -18,6 +19,7 @@ const PlanButton = ({ plan }: ComponentProps): JSX.Element => {
         className='peer pointer-events-none fixed opacity-0'
         onChange={() => setFormData((prev) => ({ ...prev, plan }))}
         checked={selectedPlan.name === name}
+        autoFocus={selectedPlan.name === name}
       />
       <label
         htmlFor={name}

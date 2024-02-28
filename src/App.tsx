@@ -11,10 +11,10 @@ function App() {
   const { currentStep } = useContext(AppContext)
 
   return (
-    <div className='min-h-screen bg-red-errors px-4 pb-4 md:flex md:items-center'>
+    <div className='min-h-screen bg-bg px-4 pb-4 md:flex md:items-center'>
       <div className='mx-auto w-full max-w-[940px] items-stretch rounded-xl bg-white md:flex md:justify-between md:p-4'>
         <Sidebar />
-        <main className='relative mx-auto mt-[99px] w-full rounded-lg bg-white px-6 py-8 ring ring-purple md:top-0 md:mt-0 md:max-w-[450px] md:rounded-none md:bg-transparent md:px-0 md:pb-4 md:pl-4 md:pt-10 '>
+        <main className='relative mx-auto mt-[99px] w-full rounded-lg bg-white px-6 py-8 shadow-md md:top-0 md:mt-0 md:max-w-[450px] md:rounded-none md:bg-transparent md:px-0 md:pb-4 md:pl-4 md:pt-10 '>
           {currentStep === 1 ? (
             <PersonalInfo />
           ) : currentStep === 2 ? (

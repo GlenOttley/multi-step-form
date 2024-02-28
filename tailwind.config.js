@@ -15,7 +15,7 @@ export default {
       full: '9999px',
     },
     boxShadow: {
-      md: '0, 25, 40, -20, rgba(0, 0, 0, 0.0951)',
+      md: '0 25px 40px -20px rgba(0, 0, 0, 0.0951)',
     },
     colors: {
       blue: '#164A8A',

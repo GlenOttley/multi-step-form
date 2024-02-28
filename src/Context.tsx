@@ -20,14 +20,14 @@ export interface Context {
 }
 
 export const AppContext = createContext<Context>({
-  currentStep: 1,
+  currentStep: 2,
   setCurrentStep: () => {},
   formData: {} as FormData,
   setFormData: () => {},
 })
 
 const Context = ({ children }: ComponentProps) => {
-  const [currentStep, setCurrentStep] = useState<number>(1)
+  const [currentStep, setCurrentStep] = useState<number>(2)
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
