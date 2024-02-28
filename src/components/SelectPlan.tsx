@@ -25,8 +25,10 @@ const SelectPlan = (): JSX.Element => {
       >
         <div>
           <fieldset className='mb-6'>
-            <legend className='mb-4 text-heading-md font-bold text-denim md:text-heading-lg'>
-              Select your plan
+            <legend>
+              <h1 className='mb-4 text-heading-md font-bold text-denim md:text-heading-lg'>
+                Select your plan
+              </h1>
             </legend>
             <span
               id='formDescription'

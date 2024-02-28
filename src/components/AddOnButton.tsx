@@ -46,6 +46,7 @@ const AddOns = ({ addOn }: ComponentProps): JSX.Element => {
         className='h-5 w-5 rounded-sm accent-purple'
         onChange={handleCheckbox}
         checked={addOnSelected}
+        autoFocus={name === 'onlineService'}
       />
       <div className='flex w-full items-center justify-between'>
         <div className='flex flex-col justify-center gap-1 md:gap-2'>

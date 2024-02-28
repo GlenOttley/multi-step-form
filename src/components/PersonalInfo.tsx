@@ -1,6 +1,7 @@
-import { useState, useRef, useContext, ChangeEvent } from 'react'
+import { useState, useRef, useContext, ChangeEvent, useEffect } from 'react'
 import { AppContext } from '../Context'
 import Stepper from './Stepper'
+import TextInput from './TextInput'
 
 const PersonalInfo = (): JSX.Element => {
   const { setCurrentStep, formData, setFormData } = useContext(AppContext)
@@ -98,6 +99,10 @@ const PersonalInfo = (): JSX.Element => {
     return isValid
   }
 
+  useEffect(() => {
+    nameFieldRef.current?.focus()
+  }, [])
+
   return (
     <>
       <form
@@ -110,8 +115,10 @@ const PersonalInfo = (): JSX.Element => {
         className='h-full md:flex md:flex-col md:justify-between'
       >
         <fieldset>
-          <legend className='mb-4 text-heading-md font-bold text-denim md:text-heading-lg'>
-            Personal info
+          <legend>
+            <h1 className='mb-4 text-heading-md font-bold text-denim md:text-heading-lg'>
+              Personal info
+            </h1>
           </legend>
           <span
             id='formDescription'
@@ -120,98 +127,127 @@ const PersonalInfo = (): JSX.Element => {
             Please provide your name, email address, and phone number.
           </span>
           <div className='flex flex-col gap-4'>
-            <div className='flex flex-col gap-1'>
-              <div className='flex justify-between'>
-                <label
-                  htmlFor='name'
-                  className='text-sm font-normal text-denim'
-                >
-                  Name
-                </label>
-                <span
-                  className='text-md font-bold text-red-errors'
-                  hidden={!errors.name.length}
-                  id='nameError'
-                >
-                  {errors.name}
-                </span>
-              </div>
-              <input
-                ref={nameFieldRef}
-                value={name}
-                onChange={({ target }) => setName(target.value)}
-                type='text'
-                id='name'
-                name='name'
-                placeholder='e.g. Stephen King'
-                aria-invalid={errors.name.length > 0}
-                aria-describedby='nameError'
-                className={`rounded-sm border px-4 py-3 outline-none placeholder:text-md placeholder:font-medium
-                        placeholder:text-grey focus:border-purple ${errors.name.length ? 'border-red-errors' : 'border-border-color'}`}
-              />
-            </div>
+            <TextInput
+              ref={nameFieldRef}
+              field='name'
+              value={name}
+              label='Name'
+              placeholder='e.g. Stephen King'
+              errors={errors.name}
+              handleChange={(e) => setName(e.target.value)}
+            />
+            <TextInput
+              ref={emailFieldRef}
+              field='email'
+              value={email}
+              label='Email Address'
+              placeholder='e.g. stephenking@lorem.com'
+              errors={errors.email}
+              handleChange={(e) => setEmail(e.target.value)}
+            />
+            <TextInput
+              ref={phoneFieldRef}
+              field='phone'
+              value={phone}
+              label='Phone Number'
+              placeholder='e.g. (123) 456 7890'
+              errors={errors.phone}
+              handleChange={handlePhoneChange}
+            />
 
-            <div className='flex flex-col gap-1'>
-              <div className='flex justify-between'>
-                <label
-                  htmlFor='email'
-                  className='text-sm font-normal text-denim'
-                >
-                  Email Address
-                </label>
-                <span
-                  className='text-md font-bold text-red-errors'
-                  hidden={!errors.email.length}
-                  id='emailError'
-                >
-                  {errors.email}
-                </span>
+            {/* repetitive markup, delete after TextInput component has been properly tested */}
+            {/* <div>
+              <div className='flex flex-col gap-1'>
+                <div className='flex justify-between'>
+                  <label
+                    htmlFor='name'
+                    className='text-sm font-normal text-denim'
+                  >
+                    Name
+                  </label>
+                  <span
+                    className='text-md font-bold text-red-errors'
+                    hidden={!errors.name.length}
+                    id='nameError'
+                  >
+                    {errors.name}
+                  </span>
+                </div>
+                <input
+                  ref={nameFieldRef}
+                  value={name}
+                  onChange={({ target }) => setName(target.value)}
+                  type='text'
+                  id='name'
+                  name='name'
+                  placeholder='e.g. Stephen King'
+                  aria-invalid={errors.name.length > 0}
+                  aria-describedby='nameError'
+                  className={`rounded-sm border px-4 py-3 outline-none placeholder:text-md placeholder:font-medium
+                          placeholder:text-grey focus:border-purple ${errors.name.length ? 'border-red-errors' : 'border-border-color'}`}
+                />
               </div>
-              <input
-                ref={emailFieldRef}
-                value={email}
-                onChange={({ target }) => setEmail(target.value)}
-                type='email'
-                id='email'
-                name='email'
-                placeholder='e.g. stephenking@lorem.com'
-                aria-invalid={errors.email.length > 0}
-                aria-describedby='emailError'
-                className={`rounded-sm border px-4 py-3 outline-none placeholder:text-md placeholder:font-medium
-                        placeholder:text-grey focus:border-purple ${errors.email.length ? 'border-red-errors' : 'border-border-color'}`}
-              />
-            </div>
-
-            <div className='flex flex-col gap-1'>
-              <div className='flex justify-between'>
-                <label
-                  htmlFor='phone'
-                  className='text-sm font-normal text-denim'
-                >
-                  Phone Number
-                </label>
-                <span
-                  className='text-md font-bold text-red-errors'
-                  hidden={!errors.phone.length}
-                  id='phoneError'
-                >
-                  {errors.phone}
-                </span>
+              <div className='flex flex-col gap-1'>
+                <div className='flex justify-between'>
+                  <label
+                    htmlFor='email'
+                    className='text-sm font-normal text-denim'
+                  >
+                    Email Address
+                  </label>
+                  <span
+                    className='text-md font-bold text-red-errors'
+                    hidden={!errors.email.length}
+                    id='emailError'
+                  >
+                    {errors.email}
+                  </span>
+                </div>
+                <input
+                  ref={emailFieldRef}
+                  value={email}
+                  onChange={({ target }) => setEmail(target.value)}
+                  type='email'
+                  id='email'
+                  name='email'
+                  placeholder='e.g. stephenking@lorem.com'
+                  aria-invalid={errors.email.length > 0}
+                  aria-describedby='emailError'
+                  className={`rounded-sm border px-4 py-3 outline-none placeholder:text-md placeholder:font-medium
+                          placeholder:text-grey focus:border-purple ${errors.email.length ? 'border-red-errors' : 'border-border-color'}`}
+                />
               </div>
-              <input
-                ref={phoneFieldRef}
-                value={phone}
-                onChange={handlePhoneChange}
-                type='tel'
-                id='phone'
-                name='phone'
-                placeholder='e.g. (123) 456 7890'
-                aria-invalid={errors.phone.length > 0}
-                aria-describedby='phoneError'
-                className={`rounded-sm border px-4 py-3 outline-none placeholder:text-md placeholder:font-medium
-                        placeholder:text-grey focus:border-purple ${errors.phone.length ? 'border-red-errors' : 'border-border-color'}`}
-              />
-            </div>
+              <div className='flex flex-col gap-1'>
+                <div className='flex justify-between'>
+                  <label
+                    htmlFor='phone'
+                    className='text-sm font-normal text-denim'
+                  >
+                    Phone Number
+                  </label>
+                  <span
+                    className='text-md font-bold text-red-errors'
+                    hidden={!errors.phone.length}
+                    id='phoneError'
+                  >
+                    {errors.phone}
+                  </span>
+                </div>
+                <input
+                  ref={phoneFieldRef}
+                  value={phone}
+                  onChange={handlePhoneChange}
+                  type='tel'
+                  id='phone'
+                  name='phone'
+                  placeholder='e.g. (123) 456 7890'
+                  aria-invalid={errors.phone.length > 0}
+                  aria-describedby='phoneError'
+                  className={`rounded-sm border px-4 py-3 outline-none placeholder:text-md placeholder:font-medium
+                          placeholder:text-grey focus:border-purple ${errors.phone.length ? 'border-red-errors' : 'border-border-color'}`}
+                />
+              </div>
+            </div> */}
           </div>
         </fieldset>
         <div className='hidden md:block'>

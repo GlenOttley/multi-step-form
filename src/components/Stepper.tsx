@@ -30,7 +30,7 @@ const Stepper = ({ submitFunction }: ComponentProps): JSX.Element => {
         <button
           type='submit'
           onClick={submitFunction}
-          className='hover:bg-blue rounded-sm bg-denim px-4 py-3 text-md font-normal text-white md:rounded-md md:px-6 md:py-4 md:text-lg'
+          className='rounded-sm bg-denim px-4 py-3 text-md font-normal text-white hover:bg-blue focus:bg-blue md:rounded-md md:px-6 md:py-4 md:text-lg'
           aria-label='Go to next step'
         >
           Next Step
@@ -39,7 +39,7 @@ const Stepper = ({ submitFunction }: ComponentProps): JSX.Element => {
         <button
           type='submit'
           onClick={submitFunction}
-          className='rounded-sm bg-purple px-4 py-3 text-md font-normal text-white hover:bg-lavender md:rounded-md md:px-8 md:py-4 md:text-lg'
+          className='rounded-sm bg-purple px-4 py-3 text-md font-normal text-white hover:bg-lavender focus:bg-lavender md:rounded-md md:px-8 md:py-4 md:text-lg'
         >
           Confirm
         </button>

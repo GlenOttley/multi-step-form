@@ -43,7 +43,7 @@ const FinishingUp = (): JSX.Element => {
                   {plan.title} ({billing})
                 </span>
                 <button
-                  className='text-md font-normal text-grey underline hover:text-purple active:text-purple'
+                  className='text-md font-normal text-grey underline hover:text-purple focus:text-purple active:text-purple'
                   onClick={() => setCurrentStep(2)}
                   aria-label='Change plan'
                 >

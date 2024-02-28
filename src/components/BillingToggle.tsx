@@ -14,11 +14,10 @@ const BillingToggle = (): JSX.Element => {
   }
 
   return (
-    // <button aria-pressed={active} onClick={toggle}>
-    //   Inverted theme: <span aria-hidden='true'>{active ? 'On' : 'Off'}</span>
-    // </button>
-
     <div className='flex w-full items-center justify-center gap-6 py-[14px]'>
+      <span aria-live='polite' id='billingStatus' className='sr-only'>
+        {billing} billing selected
+      </span>
       <span
         className={`text-md font-medium ${billing === 'monthly' ? 'text-denim' : 'text-grey'}`}
       >
@@ -29,7 +28,7 @@ const BillingToggle = (): JSX.Element => {
         type='button'
         aria-pressed={billing === 'yearly'}
         onClick={toggleBilling}
-        aria-label='Toggle billing cycle'
+        aria-labelledby='billingStatus'
         className='switch group relative inline-block h-5 w-[38px]'
       >
         <span
