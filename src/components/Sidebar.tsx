@@ -11,7 +11,7 @@ const Sidebar = (): JSX.Element => {
           <ul className='flex justify-center gap-4 py-8 md:flex-col md:gap-8 md:px-8 md:py-10'>
             <li className='flex items-center gap-4'>
               <span
-                className={`flex h-[33px] w-[33px] items-center justify-center rounded-full border ${
+                className={` flex h-[33px] w-[33px] items-center justify-center rounded-full border ${
                   currentStep === 1
                     ? 'border-sky-blue bg-sky-blue text-denim'
                     : 'border-white bg-transparent text-white'
@@ -21,7 +21,7 @@ const Sidebar = (): JSX.Element => {
               </span>
               <div className='hidden flex-col md:flex'>
                 <span className='text-sm text-light-blue'>STEP 1</span>
-                <h2 className='text-md font-bold text-white'>YOUR INFO</h2>
+                <span className='text-md font-bold text-white'>YOUR INFO</span>
               </div>
             </li>
 
@@ -37,7 +37,9 @@ const Sidebar = (): JSX.Element => {
               </span>
               <div className='hidden flex-col md:flex'>
                 <span className='text-sm text-light-blue'>STEP 2</span>
-                <h2 className='text-md font-bold text-white'>SELECT PLAN</h2>
+                <span className='text-md font-bold text-white'>
+                  SELECT PLAN
+                </span>
               </div>
             </li>
 
@@ -53,7 +55,7 @@ const Sidebar = (): JSX.Element => {
               </span>
               <div className='hidden flex-col md:flex'>
                 <span className='text-sm text-light-blue'>STEP 3</span>
-                <h2 className='text-md font-bold text-white'>ADD-ONS</h2>
+                <span className='text-md font-bold text-white'>ADD-ONS</span>
               </div>
             </li>
 
@@ -69,7 +71,7 @@ const Sidebar = (): JSX.Element => {
               </span>
               <div className='hidden flex-col md:flex'>
                 <span className='text-sm text-light-blue'>STEP 4</span>
-                <h2 className='text-md font-bold text-white'>SUMMARY</h2>
+                <span className='text-md font-bold text-white'>SUMMARY</span>
               </div>
             </li>
           </ul>
